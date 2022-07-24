@@ -4,7 +4,7 @@
 %</span><span class="bash"> makedir &lt;Package名&gt;</span>
 <span class="hljs-meta">%</span><span class="bash"> <span class="hljs-built_in">cd</span>  &lt;Package名&gt;</span>
 <span class="hljs-meta">%</span><span class="bash"> publish new</span>
-</code></pre><h3>Package.swiftをXcodeで開く</h3><h4><code>Sources/&lt;Package名&gt;/main.swift</code>を編集する</h4><pre data-language="swift" class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Mds</span>: <span class="hljs-title">Website</span> </span>{
+</code></pre><h3>Package.swiftをXcodeで開く</h3><h4><code>Sources/&lt;Package名&gt;/main.swift</code>を編集する</h4><pre data-language="swift" class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> &lt;<span class="hljs-title">Package</span>名&gt;: <span class="hljs-title">Website</span> </span>{
     <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">SectionID</span>: <span class="hljs-title">String</span>, <span class="hljs-title">WebsiteSectionID</span> </span>{
         <span class="hljs-keyword">case</span> posts
     }
@@ -20,8 +20,15 @@
     <span class="hljs-keyword">var</span> imagePath: <span class="hljs-type">Path?</span> { <span class="hljs-literal">nil</span> }
 }
 
-<span class="hljs-keyword">try</span> <span class="hljs-type">Mds</span>().publish(withTheme: .foundation)
-</code></pre><h3>サイトの生成</h3><pre data-language="shell" class="hljs"><code><span class="hljs-meta">
+<span class="hljs-keyword">try</span> &lt;<span class="hljs-type">Package</span>名&gt;().publish(using: [
+    .addMarkdownFiles(),
+    .generateHTML(withTheme: .digitrick),
+    .copyResources(),
+    .sortItems(by: \.date, order: .descending),
+    .generateRSSFeed(including: [.posts]),
+    .generateSiteMap(),
+])
+</code></pre><h3>サイトの確認</h3><h4>コマンド実行</h4><pre data-language="shell" class="hljs"><code><span class="hljs-meta">
 %</span><span class="bash"> publish run</span>
 
 Publishing &lt;サイト名&gt; (6 steps)
@@ -33,4 +40,14 @@ Publishing &lt;サイト名&gt; (6 steps)
 [6/6] Generate site map
 ✅ Successfully published &lt;サイト名&gt;
 🌍 Starting web server at http://localhost:8000
-</code></pre><h4>生成されたサイトの確認</h4><p>Outputフォルダに生成され、ローカルホストで確認できる。</p><p><a href="http://localhost:8000">http://localhost:8000</a></p></div><span>Tagged with: </span><ul class="tag-list"><li><a href="/tags/publish">Publish</a></li></ul></article></div><footer><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><p><a href="/feed.rss">RSS feed</a></p></footer></body></html>
+</code></pre><h4>生成されたファイルの確認</h4><p>Outputフォルダ内に生成され、ローカルホストで確認できる。</p><p><a href="http://localhost:8000">http://localhost:8000</a></p><h3>Github Pagesへのデプロイ</h3><h4><code>Sources/&lt;Package名&gt;/main.swift</code>に追記する</h4><pre data-language="swift" class="hljs"><code><span class="hljs-keyword">try</span> &lt;<span class="hljs-type">Package</span>名&gt;().publish(using: [
+    …
+    <span class="hljs-comment">// 追記</span>
+    .deploy(using: .gitHub(<span class="hljs-string">"&lt;user&gt;/&lt;repository&gt;"</span>, branch: <span class="hljs-string">"main"</span>, useSSH: <span class="hljs-literal">true</span>))
+])
+</code></pre><h4>コマンド実行</h4><pre data-language="shell" class="hljs"><code><span class="hljs-meta">
+%</span><span class="bash"> publish deploy</span>
+
+[1/1] Deploy using Git (git@github.com:&lt;user&gt;/&lt;repository&gt;.git)
+✅ Successfully published &lt;サイト名&gt;
+</code></pre></div><span>Tagged with: </span><ul class="tag-list"><li><a href="/tags/publish">Publish</a></li></ul></article></div><footer><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><p><a href="/feed.rss">RSS feed</a></p></footer></body></html>
