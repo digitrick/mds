@@ -11,6 +11,8 @@
 }
 
 body {
+    background: #fff;
+    color: #000;
     font-family: Helvetica, Arial;
     text-align: center;
 }
@@ -21,6 +23,10 @@ body {
     margin-right: auto;
     padding: 40px;
     text-align: left;
+}
+
+header {
+    background-color: #eee;
 }
 
 header .wrapper {
@@ -34,6 +40,7 @@ header a {
 
 header .site-name {
     font-size: 1.5em;
+    color: #000;
     font-weight: bold;
 }
 
@@ -145,38 +152,15 @@ footer {
 
 pre code {
     display: block;
+    background-color: #eee;
     padding: 15px 20px;
     border-radius: 12px;
+    color: #333;
     line-height: 1.4em;
     font-size: 0.95em;
     overflow-x: auto;
     white-space: pre;
     -webkit-overflow-scrolling: touch;
-}
-
-@media (prefers-color-scheme: light) {
-    body {
-        background-color: #fff;
-    }
-
-    body,
-    header .site-name {
-        color: #000;
-    }
-
-    .item-list > li {
-        background-color: #eee;
-    }
-
-    header {
-        background-color: #eee;
-    }
-
-    pre code {
-        color: #333;
-        background-color: #eee;
-
-    }
 }
 
 @media (prefers-color-scheme: dark) {
