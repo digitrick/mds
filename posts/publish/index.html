@@ -40,7 +40,7 @@ Publishing &lt;サイト名&gt; (6 steps)
 [6/6] Generate site map
 ✅ Successfully published &lt;サイト名&gt;
 🌍 Starting web server at http://localhost:8000
-</code></pre><h4>生成されたファイルの確認</h4><p>Outputフォルダ内に生成され、ローカルホストで確認できる。</p><p><a href="http://localhost:8000">http://localhost:8000</a></p><h3>Github Pagesへのデプロイ</h3><h4><code>Sources/&lt;Package名&gt;/main.swift</code>に追記する</h4><pre data-language="swift" class="hljs"><code><span class="hljs-keyword">try</span> &lt;<span class="hljs-type">Package</span>名&gt;().publish(using: [
+</code></pre><h4>生成されたファイルの確認</h4><p>Outputフォルダ内に生成され、ローカルホストで確認できる。<br><a href="http://localhost:8000">http://localhost:8000</a></p><h3>Github Pagesへのデプロイ</h3><h4><code>Sources/&lt;Package名&gt;/main.swift</code>に追記する</h4><pre data-language="swift" class="hljs"><code><span class="hljs-keyword">try</span> &lt;<span class="hljs-type">Package</span>名&gt;().publish(using: [
     …
     <span class="hljs-comment">// 追記</span>
     .deploy(using: .gitHub(<span class="hljs-string">"&lt;user&gt;/&lt;repository&gt;"</span>, branch: <span class="hljs-string">"main"</span>, useSSH: <span class="hljs-literal">true</span>))
