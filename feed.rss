@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>p:colon</title><description></description><link>https://picolon.com</link><language>ja</language><lastBuildDate>Fri, 5 Aug 2022 23:24:58 +0900</lastBuildDate><pubDate>Fri, 5 Aug 2022 23:24:58 +0900</pubDate><ttl>250</ttl><atom:link href="https://picolon.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://picolon.com/posts/publish</guid><title>Publishをインストールして使ってみる</title><description>Publishのインストールとセットアップ</description><link>https://picolon.com/posts/publish</link><pubDate>Sun, 24 Jul 2022 17:39:00 +0900</pubDate><content:encoded><![CDATA[<h1>Publishをインストールして使ってみる</h1><h2>Publishのインストール</h2><pre data-language="shell" class="hljs"><code><span class="hljs-meta">
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>p:colon</title><description></description><link>https://picolon.com</link><language>ja</language><lastBuildDate>Fri, 5 Aug 2022 23:57:00 +0900</lastBuildDate><pubDate>Fri, 5 Aug 2022 23:57:00 +0900</pubDate><ttl>250</ttl><atom:link href="https://picolon.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://picolon.com/posts/publish</guid><title>Publishをインストールして使ってみる</title><description>Publishのインストールとセットアップ</description><link>https://picolon.com/posts/publish</link><pubDate>Sun, 24 Jul 2022 17:39:00 +0900</pubDate><content:encoded><![CDATA[<h1>Publishをインストールして使ってみる</h1><h2>Publishのインストール</h2><pre data-language="shell" class="hljs"><code><span class="hljs-meta">
 %</span><span class="bash"> brew install publish</span>
 </code></pre><h2>Publishの初期設定</h2><h3>Packageの作成</h3><pre data-language="shell" class="hljs"><code><span class="hljs-meta">
 %</span><span class="bash"> makedir &lt;Package名&gt;</span>
@@ -22,7 +22,7 @@
 
 <span class="hljs-keyword">try</span> &lt;<span class="hljs-type">Package</span>名&gt;().publish(using: [
     .addMarkdownFiles(),
-    .generateHTML(withTheme: .digitrick),
+    .generateHTML(withTheme: .picolon),
     .copyResources(),
     .sortItems(by: \.date, order: .descending),
     .generateRSSFeed(including: [.posts]),
