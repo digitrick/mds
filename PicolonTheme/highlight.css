@@ -13,6 +13,7 @@
 .hljs {
   color: #24292e;
   background: #ffffff;
+  border-radius: 20px;
 }
 
 .hljs-doctag,
